@@ -16,6 +16,7 @@ export default [
             {
                 file: pkg.main,
                 format: "iife",
+                name: "scripthostIFrame",
                 sourcemap: true,
                 banner,
                 exports: "named",
