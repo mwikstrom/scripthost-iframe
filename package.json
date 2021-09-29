@@ -1,6 +1,6 @@
 {
   "name": "scripthost-iframe",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Scripthost bridge backend that should be loaded into an iframe",
   "main": "./dist/scripthost-iframe.js",
   "typings": "./dist/scripthost-iframe.d.ts",
