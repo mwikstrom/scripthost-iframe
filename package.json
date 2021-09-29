@@ -58,6 +58,6 @@
   },
   "dependencies": {
     "scripthost": "0.0.1",
-    "scripthost-inline": "0.0.0"
+    "scripthost-inline": "0.0.1"
   }
 }
