@@ -4,11 +4,11 @@
 
 ## scripthost-iframe package
 
-Scripthost bridge backend that should be loaded into an iframe
+Scripthost sandbox that should be loaded into an iframe
 
 ## Functions
 
 |  Function | Description |
 |  --- | --- |
-|  [setupIFrame(global)](./scripthost-iframe.setupiframe.md) | Setup the current environment as an inline scripthost bridge backend |
+|  [setupIFrame(global)](./scripthost-iframe.setupiframe.md) | Setup the current environment as an inline scripthost sandbox |
 

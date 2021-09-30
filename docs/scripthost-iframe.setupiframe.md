@@ -4,7 +4,7 @@
 
 ## setupIFrame() function
 
-Setup the current environment as an inline scripthost bridge backend
+Setup the current environment as an inline scripthost sandbox
 
 <b>Signature:</b>
 

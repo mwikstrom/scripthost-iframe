@@ -8,5 +8,5 @@
 
 |  Package | Description |
 |  --- | --- |
-|  [scripthost-iframe](./scripthost-iframe.md) | Scripthost bridge backend that should be loaded into an iframe |
+|  [scripthost-iframe](./scripthost-iframe.md) | Scripthost sandbox that should be loaded into an iframe |
 
