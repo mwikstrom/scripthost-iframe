@@ -15,6 +15,10 @@ export function setupIFrame(global = window): void {
     let bound: MessageEventSource | null = null;
     global.addEventListener("message", e => {
         const { data, source } = e;
+
+        if (!source) {
+            return;
+        }
         
         if (bound === null) {
             bound = source;
@@ -22,8 +26,8 @@ export function setupIFrame(global = window): void {
 
         if (source === bound) {
             inline.post(e.data);
-            inline.listen(message => source?.postMessage(message, { targetOrigin: "*" }));
-        } else if (source && isGenericMessage(data)) {
+            inline.listen(message => source.postMessage(message, { targetOrigin: "*" }));
+        } else if (isGenericMessage(data)) {
             const response: ErrorResponse = {
                 type: "error",
                 messageId: `iframe-bounce-${data.messageId}`,
