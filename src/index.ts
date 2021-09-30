@@ -22,7 +22,7 @@ export function setupIFrame(global = window): void {
 
         if (source === bound) {
             inline.post(e.data);
-            inline.listen(message => source?.postMessage(message));
+            inline.listen(message => source?.postMessage(message, { targetOrigin: "*" }));
         } else if (source && isGenericMessage(data)) {
             const response: ErrorResponse = {
                 type: "error",
@@ -30,7 +30,7 @@ export function setupIFrame(global = window): void {
                 inResponseTo: data.messageId,
                 message: "Sandbox is already bound to another message source"
             };
-            source.postMessage(response);
+            source.postMessage(response, { targetOrigin: "*" });
         }
     });
 }
