@@ -3,7 +3,7 @@
  * @packageDocumentation
  */
 
-import { ErrorResponse, isGenericMessage } from "scripthost";
+import { ErrorResponse, isGenericMessage } from "scripthost-core";
 import { InlineScriptSandbox } from "scripthost-inline";
 
 /**
