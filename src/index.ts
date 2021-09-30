@@ -3,6 +3,7 @@
  * @packageDocumentation
  */
 
+import { ErrorResponse, isGenericMessage } from "scripthost";
 import { InlineScriptSandbox } from "scripthost-inline";
 
 /**
@@ -11,6 +12,25 @@ import { InlineScriptSandbox } from "scripthost-inline";
  */
 export function setupIFrame(global = window): void {
     const inline = new InlineScriptSandbox();
-    inline.listen(message => global.parent.postMessage(message, "*"));
-    global.addEventListener("message", e => inline.post(e.data));
+    let bound: MessageEventSource | null = null;
+    global.addEventListener("message", e => {
+        const { data, source } = e;
+        
+        if (bound === null) {
+            bound = source;
+        }
+
+        if (source === bound) {
+            inline.post(e.data);
+            inline.listen(message => source?.postMessage(message));
+        } else if (source && isGenericMessage(data)) {
+            const response: ErrorResponse = {
+                type: "error",
+                messageId: `iframe-bounce-${data.messageId}`,
+                inResponseTo: data.messageId,
+                message: "Sandbox is already bound to another message source"
+            };
+            source.postMessage(response);
+        }
+    });
 }
