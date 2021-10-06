@@ -12,29 +12,41 @@ import { InlineScriptSandbox } from "scripthost-inline";
  */
 export function setupIFrame(global = window): void {
     const inline = new InlineScriptSandbox();
+    const ignore = new Set<string>();
     let bound: MessageEventSource | null = null;
     global.addEventListener("message", e => {
-        const { data, source } = e;
+        const data = e.data;
+        const source = (e.source as WindowProxy) || global.parent || global;
 
-        if (!source) {
+        if (!isGenericMessage(data)) {
             return;
         }
         
         if (bound === null) {
             bound = source;
+            inline.listen(message => {
+                if (isGenericMessage(message)) {
+                    ignore.add(message.messageId);
+                    source.postMessage(message, "*");
+                    ignore.delete(message.messageId);
+                }
+            });
+        }
+
+        if (ignore.has(data.messageId)) {
+            return;
         }
 
         if (source === bound) {
-            inline.post(e.data);
-            inline.listen(message => source.postMessage(message, { targetOrigin: "*" }));
-        } else if (isGenericMessage(data)) {
+            inline.post(data);            
+        } else {
             const response: ErrorResponse = {
                 type: "error",
                 messageId: `iframe-bounce-${data.messageId}`,
                 inResponseTo: data.messageId,
                 message: "Sandbox is already bound to another message source"
             };
-            source.postMessage(response, { targetOrigin: "*" });
+            source.postMessage(response, "*");
         }
     });
 }
