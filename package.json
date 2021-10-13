@@ -1,6 +1,6 @@
 {
   "name": "scripthost-iframe",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Scripthost sandbox that should be loaded into an iframe",
   "main": "./dist/scripthost-iframe.js",
   "typings": "./dist/scripthost-iframe.d.ts",
