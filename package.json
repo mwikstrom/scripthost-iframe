@@ -58,7 +58,7 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
-    "scripthost-core": "^0.2.4",
-    "scripthost-inline": "^0.2.3"
+    "scripthost-core": "^0.2.5",
+    "scripthost-inline": "^0.2.4"
   }
 }
