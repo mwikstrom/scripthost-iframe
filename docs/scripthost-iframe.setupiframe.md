@@ -16,7 +16,7 @@ export declare function setupIFrame(global?: Window & typeof globalThis): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  global | Window &amp; typeof globalThis |  |
+|  global | Window &amp; typeof globalThis | <i>(Optional)</i> |
 
 <b>Returns:</b>
 
