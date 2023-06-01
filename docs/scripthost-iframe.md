@@ -10,5 +10,5 @@ Scripthost sandbox that should be loaded into an iframe
 
 |  Function | Description |
 |  --- | --- |
-|  [setupIFrame(global)](./scripthost-iframe.setupiframe.md) | Setup the current environment as an inline scripthost sandbox |
+|  [setupIFrame(global, messageIdPrefix)](./scripthost-iframe.setupiframe.md) | Setup the current environment as an inline scripthost sandbox |
 

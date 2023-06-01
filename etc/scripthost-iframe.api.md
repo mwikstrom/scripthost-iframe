@@ -5,6 +5,6 @@
 ```ts
 
 // @public
-export function setupIFrame(global?: Window & typeof globalThis): void;
+export function setupIFrame(global?: Window & typeof globalThis, messageIdPrefix?: string): void;
 
 ```

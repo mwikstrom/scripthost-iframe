@@ -9,7 +9,7 @@ Setup the current environment as an inline scripthost sandbox
 <b>Signature:</b>
 
 ```typescript
-export declare function setupIFrame(global?: Window & typeof globalThis): void;
+export declare function setupIFrame(global?: Window & typeof globalThis, messageIdPrefix?: string): void;
 ```
 
 ## Parameters
@@ -17,6 +17,7 @@ export declare function setupIFrame(global?: Window & typeof globalThis): void;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  global | Window &amp; typeof globalThis | <i>(Optional)</i> |
+|  messageIdPrefix | string | <i>(Optional)</i> |
 
 <b>Returns:</b>
 

@@ -10,8 +10,8 @@ import { InlineScriptSandbox } from "scripthost-inline";
  * Setup the current environment as an inline scripthost sandbox
  * @public
  */
-export function setupIFrame(global = window): void {
-    const inline = new InlineScriptSandbox();
+export function setupIFrame(global = window, messageIdPrefix?: string): void {
+    const inline = new InlineScriptSandbox({ messageIdPrefix });
     const ignore = new Set<string>();
     let bound: MessageEventSource | null = null;
     global.addEventListener("message", e => {
@@ -42,7 +42,7 @@ export function setupIFrame(global = window): void {
         } else {
             const response: ErrorResponse = {
                 type: "error",
-                messageId: `iframe-bounce-${data.messageId}`,
+                messageId: `${messageIdPrefix || ""}iframe-bounce-${data.messageId}`,
                 inResponseTo: data.messageId,
                 message: "Sandbox is already bound to another message source"
             };
